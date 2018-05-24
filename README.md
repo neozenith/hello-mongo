@@ -1,6 +1,12 @@
 # hello-mongo
 Learning MongoDB for Node.JS and Heroku development
 
+# Getting Started
+
+```
+docker-compose up
+```
+
 # Cheatsheet
 
 ```bash
