@@ -2,8 +2,9 @@
   "name": "hello-mongo",
   "version": "1.0.0",
   "description": "Learning MongoDB for Node.JS and Heroku development",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,24 @@
     "url": "https://github.com/neozenith/hello-mongo/issues"
   },
   "homepage": "https://github.com/neozenith/hello-mongo#readme",
+  "eslintConfig": {
+    "extends": "@neozenith"
+  },
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "@neozenith/eslint-config": "^2.0.3",
+    "copy-webpack-plugin": "^4.5.1",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.12.1",
+    "webpack": "^4.8.3",
+    "webpack-dev-middleware": "^3.1.3"
   }
 }
