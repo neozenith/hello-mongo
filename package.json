@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/neozenith/hello-mongo/issues"
   },
-  "homepage": "https://github.com/neozenith/hello-mongo#readme"
+  "homepage": "https://github.com/neozenith/hello-mongo#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
