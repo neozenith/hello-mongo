@@ -1,8 +1,9 @@
 'use strict';
 const throng = require('throng'),
+	os = require('os'),
 	app = require('./app');
 
-const CONCURRENCY = process.env.WEB_CONCURRENCY || 1;
+const CONCURRENCY = process.env.WEB_CONCURRENCY || os.cpus().length;
 
 const logger = {
 	info: () => {},

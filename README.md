@@ -3,7 +3,14 @@ Learning MongoDB for Node.JS and Heroku development
 
 # Getting Started
 
-```
+```bash
+# Ensure clean
+docker-compose down
+
+# explicitly build
+docker-compose build
+
+# start it all up
 docker-compose up
 ```
 
@@ -12,7 +19,7 @@ docker-compose up
 ```bash
 
 # Express
-npm i express compression body-parser morgan
+npm i express compression body-parser morgan throng mongoose
 
 # Eslint
 npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @neozenith/eslint-config
