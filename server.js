@@ -5,6 +5,7 @@ const throng = require('throng'),
 
 const CONCURRENCY = process.env.WEB_CONCURRENCY || os.cpus().length;
 
+// TODO: Switch to log4js
 const logger = {
 	info: () => {},
 	error: () => {},

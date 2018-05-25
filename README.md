@@ -25,7 +25,7 @@ npm i express compression body-parser morgan throng mongoose
 npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @neozenith/eslint-config
 
 # Webpack
-npm i -D webpack webpack-dev-middleware babel-core babel-loader babel-preset-env
+npm i -D webpack webpack-cli webpack-dev-middleware babel-core babel-loader babel-preset-env
 
 # Webpack Plugins
 npm i -D copy-webpack-plugin
