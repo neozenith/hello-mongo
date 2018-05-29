@@ -8,9 +8,10 @@ services:
       - "3000:3000"
     links:
       - mongo
-    # environment:
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/
       # - WEB_CONCURRENCY=4
-      # - NODE_ENV=production
+      - NODE_ENV=production
   mongo:
     container_name: mongo
     image: mongo

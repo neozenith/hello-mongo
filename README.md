@@ -7,11 +7,10 @@ Learning MongoDB for Node.JS and Heroku development
 # Ensure clean
 docker-compose down
 
-# explicitly build
-docker-compose build
-
-# start it all up
-docker-compose up
+# start it all up and build. 
+# The build will be fast if you follow Abby Fuller's guide to efficient Dockerfile's
+# https://www.youtube.com/watch?v=pPsREQbf3PA
+docker-compose up --build
 ```
 
 # Cheatsheet
@@ -19,7 +18,10 @@ docker-compose up
 ```bash
 
 # Express
-npm i express compression body-parser morgan throng mongoose
+npm i express compression body-parser morgan throng 
+
+# MongoDB
+npm i mongoose mongodb
 
 # Eslint
 npm i -D eslint eslint-config-prettier eslint-plugin-prettier prettier @neozenith/eslint-config

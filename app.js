@@ -34,6 +34,10 @@ const environment = process.env.NODE_ENV || 'development';
 const staticPath = process.env.STATIC_PATH || path.join(__dirname, 'dist');
 let httpServer;
 
+const mongodb = require('mongodb');
+const mongo_uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
+let db = null;
+
 /**
  * startupSystem() Defines the critical path setup of the API server
  *
@@ -46,7 +50,17 @@ function startupSystem() {
 	app.use(bodyParser.json());
 
 	logger.log(`${environment} v${pkg.version}`);
+	logger.log(`${mongo_uri}`);
 
+	mongodb.MongoClient.connect(mongo_uri, function(err, client) {
+		if (err) {
+			logger.log(err);
+			process.exit(1);
+		}
+		db = client.db();
+
+		logger.log('Database connection ready');
+	});
 	/*============================== STATIC ASSETS ============================== */
 
 	if (environment === 'development') {
@@ -115,6 +129,15 @@ function shutdownSystem(code) {
 	}
 
 	return Promise.all([
+		new Promise(resolve => {
+			if (db) {
+				logger.info('MongoDB connection closing');
+				db.close(() => resolve());
+			} else {
+				logger.warn('MongoDB NOT initialised !!!');
+				resolve();
+			}
+		}),
 		new Promise(resolve => {
 			if (httpServer) {
 				logger.info('Express.js server closing');

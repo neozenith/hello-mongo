@@ -11,7 +11,6 @@ COPY *.js /usr/src/app/
 COPY ./src /usr/src/app/src
 COPY ./static /usr/src/app/static
 COPY ./routes /usr/src/app/routes
-RUN npm run build 
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
