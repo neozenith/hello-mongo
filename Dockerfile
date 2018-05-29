@@ -11,6 +11,7 @@ COPY *.js /usr/src/app/
 COPY ./src /usr/src/app/src
 COPY ./static /usr/src/app/static
 COPY ./routes /usr/src/app/routes
+COPY ./utils /usr/src/app/utils
 
 EXPOSE 3000
 CMD [ "npm", "start" ]

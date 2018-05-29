@@ -99,15 +99,6 @@ function shutdownSystem(code) {
 
 	return Promise.all([
 		new Promise(resolve => {
-			if (db) {
-				logger.info('MongoDB connection closing');
-				db.close(() => resolve());
-			} else {
-				logger.warn('MongoDB NOT initialised !!!');
-				resolve();
-			}
-		}),
-		new Promise(resolve => {
 			if (httpServer) {
 				logger.info('Express.js server closing');
 				httpServer.close(() => resolve());
