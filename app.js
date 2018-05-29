@@ -1,22 +1,6 @@
 'use strict';
 
-const logger = {
-	info: m => {
-		console.info(m);
-	},
-	error: m => {
-		console.error(m);
-	},
-	warn: m => {
-		console.warn(m);
-	},
-	debug: m => {
-		console.debug(m);
-	},
-	log: m => {
-		console.log(m);
-	}
-};
+const logger = require('./utils/logger');
 
 // Module Imports
 const express = require('express'),
@@ -34,10 +18,6 @@ const environment = process.env.NODE_ENV || 'development';
 const staticPath = process.env.STATIC_PATH || path.join(__dirname, 'dist');
 let httpServer;
 
-const mongodb = require('mongodb');
-const mongo_uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';
-let db = null;
-
 /**
  * startupSystem() Defines the critical path setup of the API server
  *
@@ -50,17 +30,6 @@ function startupSystem() {
 	app.use(bodyParser.json());
 
 	logger.log(`${environment} v${pkg.version}`);
-	logger.log(`${mongo_uri}`);
-
-	mongodb.MongoClient.connect(mongo_uri, function(err, client) {
-		if (err) {
-			logger.log(err);
-			process.exit(1);
-		}
-		db = client.db();
-
-		logger.log('Database connection ready');
-	});
 	/*============================== STATIC ASSETS ============================== */
 
 	if (environment === 'development') {
