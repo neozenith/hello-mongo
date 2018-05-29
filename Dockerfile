@@ -12,6 +12,10 @@ COPY ./src /usr/src/app/src
 COPY ./static /usr/src/app/static
 COPY ./routes /usr/src/app/routes
 COPY ./utils /usr/src/app/utils
+RUN npm run build
 
 EXPOSE 3000
-CMD [ "npm", "start" ]
+
+# FUN FACT: DO NOT RUN ["npm", "start"] as the ENTRYPOINT
+# It does not forward the SIGTERM and SIGINT events to Node
+ENTRYPOINT [ "node", "server.js" ]
