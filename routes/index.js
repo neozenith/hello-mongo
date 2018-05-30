@@ -45,12 +45,27 @@ router.get('/test', async function(req, res) {
 		});
 });
 
+router.get('/test/:id', async function(req, res) {
+	const conn = await getDBConnection();
+	conn
+		.collection('test')
+		.findOne({ _id: new mongodb.ObjectID(req.params.id) }, function(err, docs) {
+			if (err) {
+				logger.error(err);
+				res.status(500).send('Server failed to handle request. Admin should check logs');
+			} else {
+				res.status(200).json(docs);
+			}
+		});
+});
+
 router.post('/test', async function(req, res) {
 	const newEntry = req.body;
 	const conn = await getDBConnection();
 	conn.collection('test').insertOne(newEntry, function(err, doc) {
 		if (err) {
 			logger.error(err);
+			res.status(500).send('Server failed to handle request. Admin should check logs');
 		} else {
 			res.status(201).json(doc.ops[0]);
 		}
