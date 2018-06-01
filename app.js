@@ -49,7 +49,8 @@ function startupSystem() {
 	}
 
 	/*============================== ROUTES============================== */
-	app.use('/', require('./routes/index.js'));
+	app.use(require('./routes/index.js'));
+	app.use(require('./routes/articles.js'));
 
 	/*============================== ERROR HANDLING ============================== */
 	/* eslint-disable no-unused-vars */

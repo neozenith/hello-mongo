@@ -4,8 +4,8 @@ const router = express.Router();
 const logger = require('../utils/logger');
 
 const mongodb = require('mongodb');
-const collection = 'test';
-const mongo_uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+const collection = 'articles';
+const mongo_uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/';
 let db = null;
 
 async function getDBConnection() {
@@ -52,7 +52,6 @@ router.get(`/${collection}/:id`, async function(req, res) {
 		res.status(400).send(e);
 		return;
 	}
-
 	conn.collection(collection).findOne({ _id: oid }, function(err, docs) {
 		if (err) {
 			logger.error(err);
