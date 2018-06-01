@@ -17,6 +17,7 @@ const pkg = require('./package.json');
 const port = process.env.PORT || 3000;
 const environment = process.env.NODE_ENV || 'development';
 const staticPath = process.env.STATIC_PATH || path.join(__dirname, 'dist');
+const corsOptions = {};
 let httpServer;
 
 /**
@@ -31,7 +32,7 @@ function startupSystem() {
 	app.use(morgan('dev'));
 	app.use(compression());
 	app.use(bodyParser.json());
-	app.use(cors());
+	app.use(cors(corsOptions));
 
 	/*============================== SECURITY ============================== */
 
