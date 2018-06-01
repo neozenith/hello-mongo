@@ -7,6 +7,7 @@ const express = require('express'),
 	path = require('path'),
 	compression = require('compression'),
 	bodyParser = require('body-parser'),
+	cors = require('cors'),
 	morgan = require('morgan');
 
 // Config
@@ -24,12 +25,16 @@ let httpServer;
  * @return {Promise} returns promise of `Express` App.
  */
 function startupSystem() {
+	logger.log(`${environment} v${pkg.version}`);
+
 	const app = express();
 	app.use(morgan('dev'));
 	app.use(compression());
 	app.use(bodyParser.json());
+	app.use(cors());
 
-	logger.log(`${environment} v${pkg.version}`);
+	/*============================== SECURITY ============================== */
+
 	/*============================== STATIC ASSETS ============================== */
 
 	if (environment === 'development') {
