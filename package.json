@@ -4,10 +4,18 @@
   "description": "Learning MongoDB for Node.JS and Heroku development",
   "main": "app.js",
   "scripts": {
-    "prestart": "npm run build",
-    "start": "node server.js",
+    "start": "npm run docker:up",
+    "stop":"npm run docker:down",
+    
     "build": "webpack-cli --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "pretest":"npm run docker:up",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "posttest":"npm run docker:down",
+
+    "docker:up": "docker-compose up --build",
+    "docker:down":"docker-compose down"
+
   },
   "repository": {
     "type": "git",

@@ -36,6 +36,8 @@ function startupSystem() {
 
 	/*============================== SECURITY ============================== */
 
+	//TODO: Incorporate passport.js
+
 	/*============================== STATIC ASSETS ============================== */
 
 	if (environment === 'development') {
